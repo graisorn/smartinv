@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">       
+            <h1 class="text-center mb-5">Product Report</h1>
+            <table class="table-bordered table-striped">
+                <tr class="bg-primary">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>UnitStock</th>
+                </tr>
+                <tbody>
+                    <% if (products.length > 0) { %>
+                        <% products.forEach(product => {%>
+                        <tr>
+                            <td><%=product.ProductID%></td>
+                            <td><%=product.ProductName%></td>
+                            <td><%=product.CategoryID%></td>
+                            <td><%=product.UnitPrice%></td>
+                            <td><%=product.UnitInStock%></td>
+                        </tr>
+                        <%})%>
+                    <% }%>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

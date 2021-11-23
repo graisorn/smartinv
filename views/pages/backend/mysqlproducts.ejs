@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><%- heading %></h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Add new Product</a>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+       <!---Data here--> 
+       <% if(data.length){ 
+        %> 
+       <table class="table table-bordered table-striped">
+           <thead>
+               <tr class="bg-primary text-white">
+                   <th>Image</th>
+                   <th>ID</th>
+                   <th>Name</th>
+                   <th>Price</th>
+                   <th>Qty.</th>
+                   <th>Created</th>
+                   <th>Updated</th>
+                   <th>Action</th>
+               </tr>
+           </thead>
+           <tbody>
+            <%
+            for(let row=0; row < data.length;row++){
+            %>
+               <tr>
+                   <td><img src="<%=data[row].ProductPicture%>" width="50"></td>
+                   <td><%=data[row].ProductID %></td>
+                   <td><%=data[row].ProductName %></td>
+                   <td><%=formatPrice(data[row].UnitPrice) %></td>
+                   <td><%=data[row].UnitinStock %></td>
+                   <td><%=moment(data[row].CreatedDate).format('YYYY-MM-DD hh:mm') %></td>
+                   <td><%=moment(data[row].UpdatedDate).format('YYYY-MM-DD hh:mm') %></td>
+                   <td> <a href="#" class="btn btn-primary">View</a>&nbsp;
+                        <a href="#" class="btn btn-warning">Edit</a>&nbsp;
+                        <a href="#" class="btn btn-danger">Delete</a>&nbsp;
+                   </td>
+               </tr>
+            <% } %>   
+           </tbody>
+       </table>
+       <%
+        }else{
+        %>
+            <p class="text-center">No Products found</p>
+        <%    
+        }
+        %>
+    </div>
+</div>
